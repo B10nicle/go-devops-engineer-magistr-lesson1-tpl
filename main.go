@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"time"
 )
 
 func main() {
@@ -33,8 +32,6 @@ func main() {
 		if errorCount >= 3 {
 			fmt.Println("Unable to fetch server statistics")
 		}
-
-		time.Sleep(10 * time.Second)
 	}
 }
 
