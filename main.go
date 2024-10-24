@@ -10,26 +10,26 @@ import (
 )
 
 func main() {
-	errorCount := 0
+	errors := 0
 
 	for {
 		statsData, err := getStatistics()
 		if err != nil {
 			fmt.Println("Error fetching server statistics:", err)
-			errorCount++
+			errors++
 		} else {
 			stats, err := parseStatistics(statsData)
 
 			if err != nil {
 				fmt.Println("Error parsing server statistics:", err)
-				errorCount++
+				errors++
 			} else {
 				checkThresholds(stats)
-				errorCount = 0
+				errors = 0
 			}
 		}
 
-		if errorCount >= 3 {
+		if errors >= 3 {
 			fmt.Println("Unable to fetch server statistics")
 		}
 	}
@@ -91,7 +91,7 @@ func checkThresholds(stats []float64) {
 
 	currentMemoryUsage := usedMemory / totalMemory * 100
 	currentDiskUsage := usedDisk / totalDisk * 100
-	currentNetworkBandwidthUsage := usedNet / totalNet * 100
+	currentNetworkBandwidthUsage := (usedNet / totalNet) * 100
 	freeDiskMb := (totalDisk - usedDisk) / 1048576
 	freeNet := (totalNet - usedNet) / 1000000
 
