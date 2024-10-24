@@ -99,22 +99,18 @@ func checkThresholds(stats []float64) {
 	freeNet := (totalNet - usedNet) / 1000000
 
 	if loadAverage > config.LoadAverageThreshold {
-		fmt.Printf("Load Average is too high: %d", int(loadAverage))
-		fmt.Println()
+		fmt.Printf("Load Average is too high: %d\n", int(loadAverage))
 	}
 
 	if currentMemoryUsage > config.MemoryUsageLimit {
-		fmt.Printf("Memory usage too high: %d%%", int(currentMemoryUsage))
-		fmt.Println()
+		fmt.Printf("Memory usage too high: %d%%\n", int(currentMemoryUsage))
 	}
 
 	if currentDiskUsage > config.DiskUsageLimit {
-		fmt.Printf("Free disk space is too low: %d Mb left", int(freeDiskMb))
-		fmt.Println()
+		fmt.Printf("Free disk space is too low: %d Mb left\n", int(freeDiskMb))
 	}
 
 	if currentNetworkBandwidthUsage > config.NetworkBandwidthLimit {
-		fmt.Printf("Network bandwidth usage high: %d Mbit/s available", int(freeNet))
-		fmt.Println()
+		fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", int(freeNet))
 	}
 }
