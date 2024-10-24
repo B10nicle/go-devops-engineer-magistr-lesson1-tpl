@@ -39,11 +39,18 @@ func main() {
 }
 
 func getStatistics() (string, error) {
-	response, err := http.Get(config.ServerUrl)
+	response, err := http.Get(config.ServerURL)
 
 	if err != nil {
 		return "", err
 	}
+
+	defer func() {
+		if bodyError := response.Body.Close(); bodyError != nil {
+			fmt.Printf("Error closing response body: %v", bodyError)
+			fmt.Println()
+		}
+	}()
 
 	if response.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("received non-200 response code: %d", response.StatusCode)

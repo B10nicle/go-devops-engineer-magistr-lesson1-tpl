@@ -5,5 +5,5 @@ const (
 	MemoryUsageLimit      = 80.0
 	DiskUsageLimit        = 90.0
 	NetworkBandwidthLimit = 90.0
-	ServerUrl             = "http://srv.msk01.gigacorp.local/_stats"
+	ServerURL             = "http://srv.msk01.gigacorp.local/_stats"
 )
